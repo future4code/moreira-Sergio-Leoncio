@@ -1,0 +1,8 @@
+Nome: Sergio Henrique
+Cidade: Brasilia
+Profissao: Técnico de Informatica
+Certificações: CISCO CCNA 200-301
+Futura Profissão: Desenvolvedor de Software
+Hobby: Pedalar
+
+
