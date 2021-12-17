@@ -1,0 +1,56 @@
+body{
+    font-family: Helvetica;
+    text-align: center;
+    color: white;
+    background-color: rgba(17, 16, 16, 0.973);
+    padding: 0;
+    margin: 0;
+
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #666;
+}
+
+nav ul{
+   display: flex; 
+   align-items: center;
+   list-style: none;
+}
+
+ul li{
+    margin-right: 10px;
+}
+
+ul li a{
+    color: white;
+}
+
+h1{
+    font-size: 32px;
+}
+
+img{
+    border: 3px solid rgb(78, 112, 133);
+    background-color: rgb(190, 160, 160);
+    
+}
+
+footer{    
+    padding: 20px;
+    border-top: 1px solid #666;
+    margin-top: 350px;  
+}
+
+section a{  /*instituições.html*/
+    font-size: 20px;
+    color: tomato;
+}
+
+#corLetra{ /*contato.html*/
+    font-size: 20px;
+    color: tomato;
+}
