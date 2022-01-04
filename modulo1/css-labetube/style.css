@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;  
+    box-sizing: border-box;  
+}
+
+
+header{
+    background-color:chocolate;
+    height: 80px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-column: 1/-1;
+}
+.imagem-card{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    
+}
+
+
+.imagem{
+    margin: 20px;    
+    padding: 10px;
+    
+}
+
+footer{
+    background-color: lightslategrey;
+    height: 60px;
+    font-size: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    grid-column: 1/-1;
+}
+
