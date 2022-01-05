@@ -14,20 +14,31 @@ header{
     align-items: center;
     grid-column: 1/-1;
 }
+
+#botão{
+    
+}
+
 .imagem-card{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;    
+    align-items: stretch;
+    justify-items: center;
     
 }
 
 
 .imagem{
+    
     margin: 20px;    
     padding: 10px;
     
 }
+.click{
+    display: flex;
 
+}
 footer{
     background-color: lightslategrey;
     height: 60px;
@@ -39,3 +50,8 @@ footer{
     grid-column: 1/-1;
 }
 
+@media screen and (max-device-width : 800px) {
+    .imagem-card{
+        grid-template-columns: 1fr;
+    }
+}
