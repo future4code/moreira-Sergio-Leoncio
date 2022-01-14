@@ -67,6 +67,7 @@ class App extends React.Component {
     inputFoto:"",
     inputPostFoto:""
   });
+  
 
   };
 
@@ -99,7 +100,7 @@ class App extends React.Component {
           onchange={this.postFotoInput}
       />
 
-      <button onClick={this.click}>Adicionar</button>
+      <button onClick={this.addClick}>Adicionar</button>
       </Botao>
 
             {listaDePost}    
