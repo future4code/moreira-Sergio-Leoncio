@@ -1,36 +1,49 @@
 import React from "react";
-import HomeListUser from "./Componentes/HomeListUser";
-import HomeAddUser from "./Componentes/HomeAddUser";
+import styled from "styled-components";
+import HomeAddUser from "./Components/HomeAddUser";
+import HomeListUser from "./Components/HomeListUser";
 
-class App extends React.Component  {
-  
-state = {      
-    telaAtual: "addUser"}
+const Container = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+`
 
-trocaTela = () => {
-  switch (this.state.telaAtual){
-    case "addUser":
-      return <HomeAddUser irParaLista={this.irParaLista}/>
-    case "list":
-      return <HomeListUser irParaCadastro={this.irParaCadastro}/>
-    default:
-      return <div>Erro! Página não encontrada</div>
-  }
-}
-irParaCadastro = () => {
-  this.setState({telaAtual: "addUser"})
-}
-irParaLista = () => {
-  this.setState({telaAtual: "list"})
-}
-  render() {
-   
-    return (
-       <div >
-            {this.trocaTela}            
-       </div>
+class App extends React.Component {
 
-   );
-  }
+    state = {
+        telaAtual: "addUser"
+    }
+
+    trocaTela = () => {
+        switch (this.state.telaAtual){
+            case 'addUser':
+                return <HomeAddUser irParaList={this.irParaList}/>
+            case 'list':
+                return <HomeListUser irParaCadastro={this.irParaCadastro}/>
+            default:
+                return <di>Erro! Página não encontrada</di>
+        }
+    }   
+
+    irParaCadastro = () => {
+        this.setState({telaAtual: 'addUser'})
+    }
+
+    irParaList = () => {
+        this.setState({telaAtual: 'list'})
+    }
+
+
+    render(){
+
+        return(
+            <Container>                
+                <h1><u>Labenusers</u></h1>               
+                {this.trocaTela()}
+            </Container>
+        )
+    }
 }
 export default App;
