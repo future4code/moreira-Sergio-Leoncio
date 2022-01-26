@@ -1,112 +1,36 @@
 import React from "react";
-import styled from "styled-components";
-import axios from "axios";
 import HomeListUser from "./Componentes/HomeListUser";
 import HomeAddUser from "./Componentes/HomeAddUser";
 
-
-const url = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users"
-const headers = {
-  headers: {
-    Authorization: "sergio-henrique-moreira"
-  }
-}
-const urlBusca = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/search?name=&email="
-
-
-
 class App extends React.Component  {
   
-state={
-  listaUsuario: [],
-    nome:"",
-    email:"",    
-    telaAtual: true
-}
-componentDidMount() {
-  this.getAllUsers();
-}
+state = {      
+    telaAtual: "addUser"}
 
-getAllUsers = () => {
-  axios
-    .get(url, headers)
-    .then((resposta) => {
-      this.setState({ listaUsuario: resposta.data});
-    })
-    .catch((error) => {
-      alert("Algo deu errado, tente novamente");
-    });
-};
-
-getBusca = () => {
-  axios.get(urlBusca, headers)
-  .then((resposta) =>{
-    this.setState({listaUsuario: resposta.data})
-  })
-  .catch((error) => {
-    alert("Algo deu errado, tente novamente")
-  })
-}
-
-createUser = () => {
-  const body = {
-    name: this.state.nome,
-    email: this.state.email
+trocaTela = () => {
+  switch (this.state.telaAtual){
+    case "addUser":
+      return <HomeAddUser irParaLista={this.irParaLista}/>
+    case "list":
+      return <HomeListUser irParaCadastro={this.irParaCadastro}/>
+    default:
+      return <div>Erro! Página não encontrada</div>
   }
-
-  axios.post(url, body, headers)
-  .then((resposta)=>{
-    console.log(resposta.data)
-    alert(`O usuário foi criado com sucesso!`);
-      this.setState({nome:""})
-      this.setState({email:""})
-      this.getAllUsers();
-  })
-  .catch((error)=>{
-    console.log(error.response.data)
-    //alert(error);
-      this.setState({nome:""})
-      this.setState({email:""})
-  })
 }
-
-
-onChangeNome = (event) => {
-  this.setState({nome: event.target.value})
+irParaCadastro = () => {
+  this.setState({telaAtual: "addUser"})
 }
-onChangeEmail = (event) => {
-  this.setState({email: event.target.value})
+irParaLista = () => {
+  this.setState({telaAtual: "list"})
 }
-
-onClickTrocaTela = () => {
-  this.setState({telaAtual: !this.state.telaAtual})
-}
-
   render() {
-    const listComponents = this.state.listaUsuario.map((novo) => {
-      return <li key={novo.id}>{novo.name}</li>;             
-    });
-
+   
     return (
        <div >
-            <button onClick={this.onClickTrocaTela}>Trocar de Tela</button>
-            {this.state.telaAtual ? <HomeAddUser/>:<HomeListUser/>}     
-             <input 
-              placeholder="Nome:"
-              value={this.state.nome}
-              onChange={this.onChangeNome}
-            />
-            <input
-              placeholder="Email:"
-              value={this.state.email}
-              onChange={this.onChangeEmail}
-            />
-            <button onClick={this.createUser}>Criar Usuário</button>
-            {listComponents}            
+            {this.trocaTela}            
        </div>
 
    );
   }
 }
-
 export default App;
