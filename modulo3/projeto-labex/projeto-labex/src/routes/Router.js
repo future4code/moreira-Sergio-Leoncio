@@ -11,7 +11,7 @@ const Rotas = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
 
-                <Route path="/List" element={<ListTripsPage />} />
+                <Route path="/List/" element={<ListTripsPage />} />
 
                 <Route path="/AppForm" element={<ApplicationFormPage />} />
 
