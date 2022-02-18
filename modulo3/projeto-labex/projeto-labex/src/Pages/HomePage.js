@@ -1,34 +1,30 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Viagem from "../img/viagem.jpg";
+import * as G from "../components/styleGeral";
 
 const HomePage = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
-    const nextViagens = () => {
-        navigate("/List")
-    }
+  const nextViagens = () => {
+    navigate("/List");
+  };
 
-    const nextAdmin = () => {
-        navigate("/Login")
-    }
+  const nextAdmin = () => {
+    navigate("/Login");
+  };
 
   return (
-    <div>
-      <p>HomePage </p>
-      <iframe
-        src={Viagem}
-        width="480"
-        height="360"
-        frameBorder="0"
-        // para resolver o warning, coloquei esse title aqui
-        title="Gif de Viagem"
-      ></iframe>
-        <p>
-        <button onClick={nextViagens}>Viagens</button>
-        <button onClick={nextAdmin}>Área de Admin</button>
-        </p>
-    </div>
+    <G.ContainerLabex>
+      <h1>Labex</h1>
+      <p>
+        <G.ImgHome src={Viagem} />
+      </p>
+      <p>
+        <G.Botoes onClick={nextViagens}>Viagens</G.Botoes>
+        <G.Botoes onClick={nextAdmin}>Área de Admin</G.Botoes>
+      </p>
+    </G.ContainerLabex>
   );
 };
 

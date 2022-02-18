@@ -1,22 +1,110 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+//import { countries } from "../constants/countries";
+import useForm from "../constants/useForm";
+//import ApplyTrip from "../hooks/ApplyTrip";
+//import {BASE_URL} from "../constants/url";
+import { useState } from "react";
+import * as G from "../components/styleGeral";
 
-const  ApplicationFormPage = () => {
-  const navigate = useNavigate()
+const ApplicationFormPage = (props) => {
+  const navigate = useNavigate();
+  const [id, setId] = useState("");
 
-    const nextViagem = () => {
-        navigate("/list")
-    }
+  const nextViagem = () => {
+    navigate("/list");
+  };
 
+  //const AplicarViagem = ApplyTrip(`${BASE_URL}/:darvas/trips/:id/apply`, {})
+
+  const { form, onChange, cleanFields } = useForm({
+    name: "",
+    age: "",
+    applicationText: "",
+    profession: "",
+    country: "",
+  });
+
+  const enviar = (event) => {
+    event.preventDefault();
+    console.log("enviado", form);
+    cleanFields();
+  };
+
+  const viagemList =
+    props.tripsList.trips &&
+    props.tripsList.trips.map((item) => {
+      return <option value={item.id}>{item.name}</option>;
+    });
+  // console.log(props.tripsList.trips)
+  const idOnchange = (event) => {
+    setId(event.target.value);
+    console.log(id);
+  };
+  
   return (
-    <div>
-        <h1>Increva-se para uma viagem</h1>
+    <G.ContainerLabex>
+      <h1>Labex</h1>
+      <br/>
+      <h1>Inscreva-se para uma viagem</h1>
+      <br />
+      <G.FormInscricao onSubmit={enviar}>
+        <G.Select onChange={idOnchange}>
+          <option>Escolha uma viagem </option>
+          {viagemList}
+        </G.Select>
+        <G.Input
+          name={"name"}
+          value={form.name}
+          onChange={onChange}
+          placeholder="Nome"
+          required
+        />
+        <G.Input
+          name={"age"}
+          value={form.age}
+          onChange={onChange}
+          placeholder="Idade"
+          required
+          type={"number"}
+          min={18}
+        />
+        <G.Input
+          name={"applicationText"}
+          value={form.applicationText}
+          onChange={onChange}
+          placeholder="Texto de Candidatura"
+          required
+          pattern={"^.{20,}"}
+          title={"Máximo de 20 caracteres!"}
+        />
+        <G.Input
+          name={"profession"}
+          value={form.profession}
+          onChange={onChange}
+          placeholder="Profissão"
+          required
+        />
+        <G.Input
+          name={"country"}
+          value={form.country}
+          onChange={onChange}
+          placeholder="País"
+          required
+        />
+        {/* <select placeholder="Escolha um País">
+          <option> Escolha um País </option>          
+          {countries.map((country) => {
+            return <option key={country}>{country}</option>;
+          })}
+        </select> */}
         <p>
-          <button onClick={nextViagem}>Voltar</button>
-          <button>Enviar</button>
+          <G.Botoes onClick={nextViagem}>Voltar</G.Botoes>
+          <G.Botoes>Enviar</G.Botoes>
         </p>
-    </div>
+      </G.FormInscricao>
+    </G.ContainerLabex>
   );
-}
+};
 
 export default ApplicationFormPage;
