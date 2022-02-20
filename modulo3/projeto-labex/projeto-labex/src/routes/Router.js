@@ -21,9 +21,9 @@ const Rotas = (props) => {
 
                 <Route path="/Admin" element={<AdminHomePage tripsList={props.tripsList}/>}/>
 
-                <Route path="/Trip" element={<TripDetailsPage/>}/>
+                <Route path="/Trip" element={<TripDetailsPage tripsList={props.tripsList}/>}/>
 
-                <Route path="/Create" element={<CreateTripPage/>}/>
+                <Route path="/Create" element={<CreateTripPage tripsList={props.tripsList}/>}/>
                 
                 <Route element={<div>Página não encontrada!</div>} />
 

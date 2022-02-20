@@ -16,14 +16,14 @@ const HomePage = () => {
 
   return (
     <G.ContainerLabex>
-      <h1>Labex</h1>
-      <p>
-        <G.ImgHome src={Viagem} />
-      </p>
+      <G.ContainerHome>
+      <h1>Labex</h1>      
+        <G.ImgHome src={Viagem} />     
       <p>
         <G.Botoes onClick={nextViagens}>Viagens</G.Botoes>
         <G.Botoes onClick={nextAdmin}>Área de Admin</G.Botoes>
       </p>
+      </G.ContainerHome>
     </G.ContainerLabex>
   );
 };

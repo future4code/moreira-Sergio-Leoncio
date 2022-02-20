@@ -1,11 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-//import { countries } from "../constants/countries";
 import useForm from "../constants/useForm";
-//import ApplyTrip from "../hooks/ApplyTrip";
-//import {BASE_URL} from "../constants/url";
+import { BASE_URL } from "../constants/url";
 import { useState } from "react";
 import * as G from "../components/styleGeral";
+import axios from "axios";
 
 const ApplicationFormPage = (props) => {
   const navigate = useNavigate();
@@ -15,8 +14,6 @@ const ApplicationFormPage = (props) => {
     navigate("/list");
   };
 
-  //const AplicarViagem = ApplyTrip(`${BASE_URL}/:darvas/trips/:id/apply`, {})
-
   const { form, onChange, cleanFields } = useForm({
     name: "",
     age: "",
@@ -24,10 +21,19 @@ const ApplicationFormPage = (props) => {
     profession: "",
     country: "",
   });
-
+  
   const enviar = (event) => {
     event.preventDefault();
     console.log("enviado", form);
+    axios
+      .post(`${BASE_URL}/darvas/trips/${id}/apply`, form)
+      .then((response) => {
+        console.log("Deu certo:", response.data);
+        setId(response.data);
+      })
+      .catch((error) => {
+        console.log("Deu errado:", error.response);
+      });
     cleanFields();
   };
 
@@ -36,16 +42,17 @@ const ApplicationFormPage = (props) => {
     props.tripsList.trips.map((item) => {
       return <option value={item.id}>{item.name}</option>;
     });
-  // console.log(props.tripsList.trips)
+  //console.log(props.tripsList.trips);
+
   const idOnchange = (event) => {
     setId(event.target.value);
     console.log(id);
   };
-  
+
   return (
     <G.ContainerLabex>
       <h1>Labex</h1>
-      <br/>
+      <br />
       <h1>Inscreva-se para uma viagem</h1>
       <br />
       <G.FormInscricao onSubmit={enviar}>

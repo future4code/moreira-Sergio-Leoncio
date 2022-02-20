@@ -7,7 +7,7 @@ import { useProtectedPage } from "../hooks/useProtectedPage";
 import { useState } from "react";
 import * as G from "../components/styleGeral";
 
-const TripDetailsPage = (props) => {
+const TripDetailsPage = () => {
   useProtectedPage();
   const [data, setData] = useState({});  
   const navigate = useNavigate();
@@ -32,18 +32,19 @@ const TripDetailsPage = (props) => {
   const nextAdmin = () => {
     navigate("/Admin");
   };
-
   
   return (
     <G.ContainerLabex>
       <h1>Labex</h1>
       <br />
       <h1>Viagens</h1>
+      
       <p>
         <G.Botoes onClick={nextAdmin}>Voltar</G.Botoes>
       </p>
       <h2>Canditatos Pendentes</h2>
       <h2>Canditados Aprovados</h2>
+      
     </G.ContainerLabex>
   );
 };

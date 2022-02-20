@@ -16,23 +16,15 @@ const ListTripsPage = (props) => {
     props.tripsList.trips &&
     props.tripsList.trips.map((item) => {
       return (
-        <G.CardList value={item.id}>
-          <p>
-            <strong>Nome:</strong> {item.name}
-          </p>
-          <p>
-            <strong>Descrição:</strong> {item.description}
-          </p>
-          <p>
-            <strong>Planeta:</strong> {item.planet}
-          </p>
-          <p>
-            <strong>Duração:</strong> {item.durationInDays}
-          </p>
-          <p>
-            <strong>Data:</strong> {item.date}
-          </p>
+        <G.ContainerCard>
+        <G.CardList value={item.id}>         
+          <p><strong>Nome:</strong> {item.name}</p>
+          <p><strong>Descrição:</strong> {item.description}</p>
+          <p><strong>Planeta:</strong> {item.planet}</p>
+          <p><strong>Duração:</strong> {item.durationInDays}</p>
+          <p><strong>Data:</strong> {item.date}</p>          
         </G.CardList>
+        </G.ContainerCard>
       );
     });
 
