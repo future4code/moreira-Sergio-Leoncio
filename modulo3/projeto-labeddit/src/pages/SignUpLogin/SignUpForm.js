@@ -6,14 +6,14 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { signUp } from "../../services/users"
 
-const SignUpForm = () => {
+const SignUpForm = ({setRightButtonText}) => {
   const [form, onChange, clear] = useForm({username:'', email:'', password:''})
   
   const navigate = useNavigate()
 
   const onSubmitForm = (event) => {
      event.preventDefault()
-     signUp(form, clear, navigate)    
+     signUp(form, clear, navigate, setRightButtonText)    
   }
   return (               
         <L.InputsContainer>

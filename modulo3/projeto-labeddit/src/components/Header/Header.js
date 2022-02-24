@@ -1,15 +1,28 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
+import AppBar from "@material-ui/core/AppBar";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { StyledToolbar } from "./styled";
 import { nextLogin } from '../../routers/coordinator'
 import { useNavigate } from "react-router-dom";
-import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 
-const Header = () => {
-  useUnprotectedPage()
+const Header = ({rightButtonText, setRightButtonText}) => {    
+  const token = localStorage.getItem('token')
   const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("token")
+  }
+
+  const rightButtonAction = () => {
+    if (token){
+      logout()
+      setRightButtonText("Login")
+      nextLogin(navigate)      
+    }else{
+      nextLogin(navigate)
+    }
+  }
 
   return (
     <AppBar position="static">
@@ -17,8 +30,8 @@ const Header = () => {
         <Typography variant="h6">
           LabEddit
         </Typography>
-        <Button onClick={()=>nextLogin(navigate)} color="inherit">
-          Login
+        <Button onClick={rightButtonAction} color="inherit">
+          {rightButtonText}
         </Button>
       </StyledToolbar>
     </AppBar>

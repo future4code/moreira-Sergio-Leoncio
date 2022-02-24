@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import useUnprotectedPage from "../../hooks/useUnprotectedPage"
 
-const LoginPage = () => {
+const LoginPage = ({setRightButtonText}) => {
   useUnprotectedPage()
   const [form, onChange, clear] = useForm({email:'', password:''})
   
@@ -21,7 +21,7 @@ const LoginPage = () => {
   return (    
       <L.ScreenContainer>
         <L.LogoImage src={img_eddit} />        
-        <LoginForm/> 
+        <LoginForm setRightButtonText={setRightButtonText}/> 
         <L.SignUpButtonContainer>
             <Button
               onClick={()=>nextCadastro(navigate)}

@@ -6,52 +6,50 @@ import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/users";
 
-const LoginForm = ({setRightButtonText}) => {
-  const [form, onChange, clear] = useForm({email:'', password:''})
+const FeedForm = () => {
+  const [form, onChange, clear] = useForm({title:'', body:''})
   
   const navigate = useNavigate()
 
   const onSubmitForm = (event) => {
     //console.log(form)
     event.preventDefault()
-    login(form, clear, navigate, setRightButtonText)
+    login(form, clear, navigate)
   }  
 
   return (               
         <L.InputsContainer>
           <form onSubmit={onSubmitForm}>
             <TextField
-                name={'email'}
-                value={form.email}
+                name={'title'}
+                value={form.title}
                 onChange={onChange}
-                label={"E-mail"}
+                label={"Título"}
                 variant={"outlined"}
                 fullWidth
                 margin={'normal'}
-                required
-                type={'email'}
+                required                
             />
             <TextField
-                name={'password'}
-                value={form.password}
+                name={'body'}
+                value={form.body}
                 onChange={onChange}
-                label={"Senha"}
+                label={"Comentário"}
                 variant={"outlined"}
                 fullWidth
                 margin={'normal'}
-                required
-                type={"password"}
-                />
-            <Button
+                required                
+            />
+           <Button
               type={'submit'}
               fullWidth
               variant={"contained"}
               color="primary"                          
             >
-              Fazer Login!
+              Postar!
             </Button>
           </form>
         </L.InputsContainer>            
   );
 };
-export default LoginForm;
+export default FeedForm;

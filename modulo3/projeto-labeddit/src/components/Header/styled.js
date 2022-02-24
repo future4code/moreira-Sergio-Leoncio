@@ -4,6 +4,5 @@ import Toolbar from '@mui/material/Toolbar'
 export const StyledToolbar = styled(Toolbar)`
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
-    background-color: #F27649;
+    justify-content: space-between;    
 `
