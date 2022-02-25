@@ -4,7 +4,7 @@ import { TextField } from "@material-ui/core";
 import useForm from "../../hooks/useForm";
 import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../services/users";
+import { CreatePost } from "../../services/posts";
 
 const FeedForm = () => {
   const [form, onChange, clear] = useForm({title:'', body:''})
@@ -12,9 +12,9 @@ const FeedForm = () => {
   const navigate = useNavigate()
 
   const onSubmitForm = (event) => {
-    //console.log(form)
+    console.log(form)
     event.preventDefault()
-    login(form, clear, navigate)
+    CreatePost(form, clear)
   }  
 
   return (               

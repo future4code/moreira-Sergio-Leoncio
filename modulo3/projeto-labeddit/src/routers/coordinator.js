@@ -6,11 +6,14 @@ export const nextCadastro = (navigate) => {
         navigate("/Cadastro")
 }
 
-export const nextFeed = (navigate) => {
-        navigate("/Inicio")
+export const nextFeed = (navigate, id) => {
+        navigate(`/Inicio/${id}`)
 }
 
-export const nextList = (navigate) => {
-        navigate("/Lista")
+export const nextList = (navigate, id) => {
+        navigate(`/Lista/${id} `)
 }
 
+export const nextComments = (navigate, id) => {
+        navigate(`/Comenta/${id}`)
+}

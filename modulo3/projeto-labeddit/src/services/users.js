@@ -13,8 +13,7 @@ export const login = (body, clear, navigate, setRightButtonText) => {
     .catch((err) => {
         alert(err.response.data.message)
     })
-  }
-  
+  }  
 
 export const signUp = (body, clear, navigate, setRightButtonText) => {
     axios.post(`${BASE_URL}/users/signup`, body)
