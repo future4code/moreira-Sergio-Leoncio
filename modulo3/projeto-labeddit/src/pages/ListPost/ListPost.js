@@ -5,11 +5,13 @@ import useProtectedPage from "../../hooks/useProtectedPage";
 import useRequestData from "../../hooks/useRequestData";
 import {ConteinerNovoCard} from "../../components/NovoCard";
 import * as F from "./styled";
-import setaCima from "../../assets/setaCima.png"
-import setaBaixo from "../../assets/setaBaixo.png"
 import Button from "@material-ui/core/Button";
 import { nextFeed } from "../../routers/coordinator";
 import { useNavigate } from "react-router-dom";
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import { Icon } from "@mui/material";
+
 
 const ListPost = () => {
   useProtectedPage();
@@ -33,9 +35,13 @@ const ListPost = () => {
             <F.Texto>{item.body}</F.Texto>
             <F.Numero>
               <F.Numero>
-             <F.SetaImg src={setaCima}/> 
+              <Icon>
+               <ThumbUpIcon/>
+               </Icon>             
              <F.TextoN> {item.userVote}</F.TextoN>
-             <F.SetaImg src={setaBaixo}/>
+             <Icon>      
+                 <ThumbDownIcon/>
+               </Icon>             
              </F.Numero>
              <F.TextoN> {item.voteSum} :Comentário</F.TextoN>
             </F.Numero>

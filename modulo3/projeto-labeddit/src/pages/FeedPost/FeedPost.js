@@ -7,12 +7,15 @@ import { nextComments, nextList } from "../../routers/coordinator";
 import { useNavigate } from "react-router-dom";
 import FeedForm from "./FeedForm";
 import * as F from "./styled";
-import setaCima from "../../assets/setaCima.png"
-import setaBaixo from "../../assets/setaBaixo.png"
-
+import { useState } from "react";
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import { Icon } from "@mui/material";
 
 const FeedPost = () => {
   useProtectedPage();
+
+  const [like, setLike] = useState(0)  
 
   const navigate = useNavigate()
 
@@ -29,28 +32,33 @@ const FeedPost = () => {
   
   const postsCard = posts.map((item) => {    
       return (
+          
           <F.ContainerSetas>
-          <ConteinerCard onClick={() => onClickCard(item.id)} key={item.id}>
+            <ConteinerCard onClick={() => onClickCard(item.id)} key={item.id}>
             <F.Nome><strong>{item.username}</strong></F.Nome>
             <F.Texto>{item.body}</F.Texto>
             </ConteinerCard>
               <F.Numero>
               <F.Numero>              
               <F.SetaIcone>
-             <F.SetaImg src={setaCima}/> 
+                <Icon onClick={() => setLike(like + 1)}>
+               <ThumbUpIcon/>
+               </Icon>
              </F.SetaIcone>           
              <F.Voto>
-             <F.TextoN>N {item.userVote}</F.TextoN>
+             <F.TextoN>{like} {item.userVote}</F.TextoN>
              </F.Voto>
              <F.SetaIcone>
-             <F.SetaImg src={setaBaixo}/>
+               <Icon onClick={() => setLike(like - 1)}>      
+                 <ThumbDownIcon/>
+               </Icon>             
              </F.SetaIcone>
              </F.Numero>
              <F.SetaIcone onClick={() => onClickComments(item.id)}>             
              <F.TextoN> {item.voteSum} :Comentário</F.TextoN>
              </F.SetaIcone>
             </F.Numero> 
-          </F.ContainerSetas>
+          </F.ContainerSetas>         
       )
   })
 

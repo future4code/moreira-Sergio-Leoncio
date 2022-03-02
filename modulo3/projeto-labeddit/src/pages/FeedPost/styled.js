@@ -24,10 +24,6 @@ export const CardContainer = styled.div`
     align-items: center;
     width: 100vw;
 `
-export const SetaImg = styled.img`
-    width: 30px;
-    right: 30px;
-`
 export const Nome = styled.p`
   //border-bottom: 1px solid white;
   text-align: center;

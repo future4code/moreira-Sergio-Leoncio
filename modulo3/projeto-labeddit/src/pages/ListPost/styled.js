@@ -7,10 +7,7 @@ export const ScreenContainer = styled.div`
     width: 100vw;
     margin-top: 5vh;
 `
-export const SetaImg = styled.img`
-    width: 30px;
-    right: 30px;
-`
+
 export const Nome = styled.p`
   //border-bottom: 1px solid white;
   text-align: center;
