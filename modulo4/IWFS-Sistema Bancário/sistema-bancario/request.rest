@@ -1,0 +1,13 @@
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+    "cliente": "Augusto",
+    "cpf": "021.031.041-14",
+    "dataNasc": "22/03/2008",
+    "saldoTotal": 50,
+    "debitos": [0]        
+}
+###
+
+GET http://localhost:3333/users
