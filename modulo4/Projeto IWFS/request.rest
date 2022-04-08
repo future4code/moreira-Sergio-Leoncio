@@ -1,0 +1,11 @@
+POST http://localhost:3003/TodoListUser
+Content-Type: application/json
+
+{
+	"name": "Sergio",
+	"nickname": "serginho",
+	"email": "sergioo@dev.com"
+}
+
+###
+GET http://localhost:3003/TodoListUser/2 
