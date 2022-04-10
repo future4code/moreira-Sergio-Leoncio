@@ -2,10 +2,38 @@ POST http://localhost:3003/TodoListUser
 Content-Type: application/json
 
 {
-	"name": "Sergio",
-	"nickname": "serginho",
-	"email": "sergioo@dev.com"
+	"name": "Claudia",
+	"nickname": "Claudinha",
+	"email": "claudia@dev.com"
 }
 
 ###
 GET http://localhost:3003/TodoListUser/2 
+
+###
+
+PUT http://localhost:3003/TodoListUser/edit/4
+Content-Type: application/json
+
+{
+	"email": ""
+}
+
+###
+POST http://localhost:3003/TodoListTask/task
+Content-Type: application/json
+
+{
+	"id": "1",
+	"title": "Criar banco dos alunos", 
+	"description": "Devemos criar o banco dos alunos para o módulo do backend",
+	"limit_date": "2020-05-04",
+	"creator_user_id": "001"
+}
+
+###
+
+GET http://localhost:3003/TodoListTask/task/1
+
+
+ 
