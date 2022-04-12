@@ -1,0 +1,15 @@
+GET http://localhost:3003/Actor
+
+###
+
+PUT http://localhost:3003/Actor/001
+Content-Type: application/json
+
+{
+    "name": "Tony Ramos",
+    "salary": "400000",
+    "birth_date": "1948-08-25",
+    "gender": "male"
+}
+
+
