@@ -1,0 +1,26 @@
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+  "zipcode": "71994390"    
+}
+
+###
+POST http://localhost:3003/users/signup 
+Content-Type: application/json
+
+{
+    "id": "" ,
+   "name": "Sergio",
+   "nickname": "serginbho",
+   "email": "sergio@gmail.com",
+   "address":{
+   "Estado": "DF",
+   "Cidade": "Brasilia",
+   "Bairro": "Arniqueira",
+   "Logradouro": "SHA",
+   "Cep": "71994390",
+   "Complemnento": "",
+   "Numero": ""
+   }
+}
