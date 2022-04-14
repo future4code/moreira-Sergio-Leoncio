@@ -27,7 +27,7 @@ export default async function createUser(
       const id: string = Date.now().toString()
 
       const newUser: user = { id, name, nickname, email, address }
-      const newAddress: userAddress = {id, name, nickname, email,Estado, Cidade, Bairro, Logradouro, Cep, Complemnento, Numero, id}
+      const newAddress = {idAddress, name, nickname, email,Estado, Cidade, Bairro, Logradouro, Cep, Complemnento, Numero, id}
 
       await connection('aula_webservices_users').insert(newUser)
       await connection('aula_servico_backend').insert(newAddress)
