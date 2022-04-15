@@ -5,7 +5,7 @@ import { connection } from "../data/connection";
 export default async function createUsers(req: Request, res: Response): Promise<void> {
    try {
 
-      const { name, email, password } = req.body
+      const { name, email, password } = req.body      
       
       if (!name || !email || !password) {
          res.statusCode = 422

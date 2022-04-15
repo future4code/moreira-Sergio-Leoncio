@@ -10,7 +10,7 @@ export default async function deleteUsers(req:Request, res:Response):Promise<voi
             .delete()
             .where({ id })
 
-        res.status(200).end()
+        res.status(200).end('Usuário deletado com sucesso!')
 
     } catch (error) {
         res.status(500).end()

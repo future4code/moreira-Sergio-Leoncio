@@ -12,13 +12,15 @@ export default async function createProducts(req: Request, res: Response): Promi
          res.statusCode = 422
          throw "'name', 'email' e 'password' são obrigatórios"
       }
-      const newProdutos:any = {name: name, price: price, imagem: imagem}
         //await connection.raw(`INSERT INTO labecommerce_products         
-       // VALUES ("${name}", "${price}","${image_url}");
-//`)
-      await connection("labecommerce_products")
-         .insert(newProdutos)
-
+       // VALUES ("${name}", "${price}","${imagem}");
+      //`)
+      // const newProdutos:any = {name: name, price: price, imagem: imagem}
+      // await connection("labecommerce_products")
+      //    .insert(newProdutos)
+      
+         await connection("labecommerce_products")
+         .insert({name, price, imagem})
          
       res.status(201).end("Produto criado!")
 

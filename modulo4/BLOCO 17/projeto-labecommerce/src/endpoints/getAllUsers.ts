@@ -7,6 +7,10 @@ export default async function getAllUsers(req: Request, res: Response): Promise<
 
     try {
         const name = req.query
+        if(!name){
+            res.statusCode = 404
+            throw "Lista de usuários não encontrada!"             
+           }
         //const result: user[] = await connection.raw("SELECT * FROM labecommerce_users")
         //res.send(result[0])
         const users: user[] = await connection('labecommerce_users')
