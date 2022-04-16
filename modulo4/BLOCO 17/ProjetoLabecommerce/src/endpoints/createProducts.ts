@@ -6,11 +6,11 @@ import { products } from "../types";
 export default async function createProducts(req: Request, res: Response): Promise<void> {
    try {
 
-      const { name, price, imagem } = req.body
+      const { name, price, image } = req.body
       
-      if (!name || !price || !imagem) {
+      if (!name || !price || !image) {
          res.statusCode = 422
-         throw "'name', 'email' e 'password' são obrigatórios"
+         throw "'name', 'price' e 'image' são obrigatórios"
       }
         //await connection.raw(`INSERT INTO labecommerce_products         
        // VALUES ("${name}", "${price}","${imagem}");
@@ -20,7 +20,7 @@ export default async function createProducts(req: Request, res: Response): Promi
       //    .insert(newProdutos)
       
          await connection("labecommerce_products")
-         .insert({name, price, imagem})
+         .insert({name, price, image})
          
       res.status(201).end("Produto criado!")
 

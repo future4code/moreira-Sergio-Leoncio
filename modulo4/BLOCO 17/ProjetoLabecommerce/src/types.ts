@@ -6,8 +6,15 @@ export type user = {
 }
 
 export type products = {
-   id: number;
-   name: string;
-   price: number;
-   imagem: string
+   id: number
+   name: string
+   price: number
+   image: string
+}
+
+export type purchase = {
+   user_id: number
+   products_id: number
+   quantity: number
+   total_price: number
 }
