@@ -1,0 +1,24 @@
+GET  http://localhost:3333/users 
+
+###
+
+GET  http://localhost:3333/users/search?type=ADMIN 
+
+###
+
+GET  http://localhost:3333/users/name?name=Elsa 
+
+###
+
+POST http://localhost:3333/users 
+Content-Type: application/json
+
+{
+    "id": 7,
+    "name": "Sergio",
+    "email": "sergio@gmail.com",
+    "type": "ADMIN",
+    "age": 49
+}
+
+
