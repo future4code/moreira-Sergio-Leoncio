@@ -10,7 +10,8 @@ export class UserDatabase extends BaseDatabase {
         email: user.getEmail(),
         password: user.getPassword(),
         role: user.getRole()
-      })
+      })      
+      
     } catch(error: any){
       throw new Error(error.sqlMessage || error.message)
     }
@@ -44,7 +45,10 @@ export class UserDatabase extends BaseDatabase {
   }
   public async getUser(id: string): Promise<User>{
     try{
-      const user:any = await BaseDatabase.connection('Cookenu_user').select('id', 'name', 'email').where('id', id)
+      const user:any = await BaseDatabase
+      .connection('Cookenu_user')
+      .select('id', 'name', 'email')
+      .where('id', id)
       return user
 
     } catch (error: any){

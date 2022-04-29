@@ -19,7 +19,7 @@ export const Signup = async (req: Request, res: Response) => {
     
         if (!req.body.password || req.body.password.length < 6) {
             throw new Error("Invalid password");
-        }
+        }        
 
         const userDatabase = new UserDatabase()        
         const user = await userDatabase.findUserByEmail(email)
@@ -27,7 +27,7 @@ export const Signup = async (req: Request, res: Response) => {
         if(user){
             res.statusCode = 409
             throw "Esse email já está cadastrado!"
-        }
+        }       
 
         const idGenerator = new IdGenerator()
         const id = idGenerator.generate()
@@ -39,7 +39,7 @@ export const Signup = async (req: Request, res: Response) => {
         await userDatabase.createUser(newUser)
 
         const authenticator = new Authenticator()
-        const token = authenticator.generate({id, role})
+        const token = authenticator.generate({id, role})                
 
         res.status(200).send({message: 'Usuário criado com sucesso', token})
 

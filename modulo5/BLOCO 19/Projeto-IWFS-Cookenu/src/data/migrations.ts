@@ -11,6 +11,20 @@ const createTables = () => BaseDatabase.connection
          password VARCHAR(255) NOT NULL,
          role VARCHAR(255) NOT NULL
       );
+      
+      CREATE TABLE IF NOT EXISTS Cookenu_recipe (
+         id VARCHAR(255) PRIMARY KEY,
+         title VARCHAR(255) NOT NULL,
+         description VARCHAR(255) NOT NULL,
+         date TIMESTAMP DEFAULT CURRENT_TIMESTAMP               
+      );
+
+      CREATE TABLE IF NOT EXISTS Cookenu_user_recipe (
+         user_id VARCHAR(255),
+         recipe_id VARCHAR(255),
+         FOREIGN KEY (user_id) REFERENCES Cookenu_user(id),
+         FOREIGN KEY (recipe_id) REFERENCES Cookenu_recipe(id)
+      );
    `)
    .then(() => { console.log("Tabelas criadas") })
    .catch(printError)
