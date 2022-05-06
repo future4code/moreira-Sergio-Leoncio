@@ -1,20 +1,27 @@
 import UserBusiness from "./business/UserBusiness";
 import { app } from "./controller/app";
+import PostController from "./controller/PostController";
 import UserController from "./controller/UserController";
 import UserData from "./data/UserData";
-import { Authenticator } from "./services/Authenticator";
-import { HashManager } from "./services/HashManager";
-import { IdGenerator } from "./services/IdGenerator";
+import PostData from "./data/PostData";
+import PostBusiness from "./business/PostBusiness";
 
 const userBusiness = new UserBusiness(
     new UserData(),
-    new IdGenerator(),
-    new HashManager(),
-    new Authenticator()
+)
+
+const postBusiness = new PostBusiness(
+    new PostData()
 )
 
 const userController = new UserController(
     userBusiness
 );
 
+const postController = new PostController(
+    postBusiness
+);
+
 app.post("/user/signup", userController.signup)
+app.post("/login", userController.login)
+app.post("/Post", postController.createPost)

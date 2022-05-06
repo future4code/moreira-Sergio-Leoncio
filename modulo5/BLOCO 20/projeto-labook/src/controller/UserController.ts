@@ -8,13 +8,12 @@ export default class UserController{
     ){}
 
     signup = async(req: Request, res: Response) =>{
-        const {name, email, password, role} = req.body;
+        const {name, email, password} = req.body;
 
         const input: SignupInputDTO ={
             name,
             email,
-            password,
-            role
+            password,            
         }
         try {
             console.log(1)
@@ -27,6 +26,27 @@ export default class UserController{
                 return res.status(400).send(error.message)
             }
             res.status(500).send("Erro no signup")
+        }
+    }
+
+    login = async(req: Request, res: Response) =>{
+        const {name, email, password} = req.body
+
+        const input: SignupInputDTO ={
+            name,
+            email,
+            password,            
+        }    
+        try{
+            const token = await this.userBusiness.login(input)
+            res.status(201).send({message: "Usuário logado com sucesso", token})
+            
+
+        }catch (error){
+            if (error instanceof Error) {
+                return res.status(400).send(error.message)
+            }
+            res.status(500).send("Erro no login")
         }
     }
 }
