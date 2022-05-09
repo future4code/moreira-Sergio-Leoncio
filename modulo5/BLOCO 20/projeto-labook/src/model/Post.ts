@@ -1,3 +1,7 @@
+export type authenticationData = {
+    id: string
+}
+
 export enum POST_ROLES {
     NORMAL = "NORMAL",
     EVENT = "EVENT",
@@ -15,6 +19,12 @@ export enum POST_ROLES {
     }
     public set created_date(value: Date) {
         this._created_date = value
+    }
+    public get type(): POST_ROLES {
+        return this._type
+    }
+    public set type(value: POST_ROLES) {
+        this._type = value
     }
     public get description(): string {
         return this._description
@@ -38,10 +48,10 @@ export enum POST_ROLES {
     constructor(
         private _id: string,
         private _photo: string,
-        private _description: string,
-        private _created_date?: Date,        
-        private _author_id?: string,
-        private _type?: POST_ROLES
+        private _description: string,        
+        private _type?: POST_ROLES,
+        private _created_date?: Date,
+        private _author_id?: string
     ){}
 }
 

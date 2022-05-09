@@ -7,11 +7,11 @@ import { PostInputDTO } from "../types/PostInputDTO";
 
 export default class PostBusiness{
 
-        private userData:IPostData;
+        private postData:IPostData;
         private idGenerator:IdGenerator;
         private hashManager:HashManager;
         private authenticator:Authenticator;
-    postData: any;
+    
 
     constructor(postDataRepository:IPostData){
         this.postData = postDataRepository
@@ -21,25 +21,24 @@ export default class PostBusiness{
     }
 
     createPost = async (input:PostInputDTO) =>{
+                
         //validacao
-        const {photo, description, type, created_date, author_id} = input
-        if(!photo || !description || !created_date || !author_id ){
+        const {photo, description, type} = input
+
+        if(!photo || !description ){
             throw new Error("Campos inválidos")
         }
 
         //criar uma id pro usuario
         const id = this.idGenerator.generateId()
-
-        
+                
         //criar o usuario no banco
         const post = new Post(
             id,
             photo,
-            description,
-            created_date,
-            author_id            
+            description                                     
         )
-        await this.postData.insertPost(post)
-        
-    }    
+        await this.postData.insertPost(post)        
+    } 
+       
 }

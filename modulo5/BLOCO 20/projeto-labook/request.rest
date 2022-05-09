@@ -2,8 +2,8 @@ POST http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-   "name": "Sergio", 
-   "email": "sergio@gmail.com",
+   "name": "jaime", 
+   "email": "jaime@gmail.com",
    "password": "123456"   
 }
 
@@ -12,18 +12,19 @@ POST http://localhost:3003/login
 Content-Type: application/json
 
 {   
-   "email": "sergio@gmail.com",
+   "email": "jaime@gmail.com",
    "password": "123456"
 }
 
 ###
 POST http://localhost:3003/Post
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ0NWY0YmZiLTI1NzctNGIxZC1iMzc5LTA3OTMwOWFjZjBhYiIsImlhdCI6MTY1MTkzMDY3NCwiZXhwIjoxNjUyMDE3MDc0fQ.lT2mvK3Q3xuBqnwYZ39kjWzqAmA9fCsn2BGlo4uYNOE
 
 {
-   "photo": "sergio", 
-   "description": "gmail",
-   "type": "NORMAL"   
+   "photo": "viagem", 
+   "description": "viagem nordeste",
+   "type": "NORMAL"      
 }
 
  

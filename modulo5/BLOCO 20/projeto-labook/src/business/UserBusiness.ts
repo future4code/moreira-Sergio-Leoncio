@@ -22,7 +22,7 @@ export default class UserBusiness{
     signup = async (input:SignupInputDTO) =>{
         //validacao
         const {name, email, password} = input
-        if(!email || !name || !password){
+        if(!email || !name || !password ){
             throw new Error("Campos inválidos")
         }
 
