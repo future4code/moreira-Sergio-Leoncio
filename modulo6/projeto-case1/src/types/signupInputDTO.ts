@@ -1,4 +1,5 @@
 export type SignupInputDTO = {
-    name: string
-    tags: []    
+    id: number
+    name: string 
+    tags?: string[]       
 }

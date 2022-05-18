@@ -1,9 +1,8 @@
-
 export default class Products{
-    public get tags(): [] {
+    public get tags(): string[] {
         return this._tags
     }
-    public set tags(value: []) {
+    public set tags(value: string[]) {
         this._tags = value
     }
     public get name(): string {
@@ -12,17 +11,17 @@ export default class Products{
     public set name(value: string) {
         this._name = value
     }
-    public get id(): string {
+    public get id(): number {
         return this._id
     }
-    public set id(value: string) {
+    public set id(value: number) {
         this._id = value
     }
     
     constructor(
-        private _id: string,
+        private _id: number,
         private _name: string,
-        private _tags: []
+        private _tags: string[]        
     ){}   
 }
 

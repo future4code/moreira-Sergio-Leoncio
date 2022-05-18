@@ -12,4 +12,7 @@ const productsController = new ProductsController(
 )
 
 app.post("/products/signup", productsController.signup)
+//app.get("/products/search/:id", productsController.search)
+//app.post("/products/tags/signup", productsController.signupTags)
+
 

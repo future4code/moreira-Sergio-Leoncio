@@ -1,7 +1,14 @@
-POST http://localhost:3003/user/signup
+POST http://localhost:3003/products/signup
+
+
+###
+GET http://localhost:3003/products/search/8371
+
+###
+POST http://localhost:3003/products/tags/signup
 Content-Type: application/json
 
 {
-      "name": "VESTIDO TRICOT CHEVRON",
-      "tags": ["balada", "neutro", "delicado", "festa"]
+      "id": 9,
+      "name": "passeio"
 }
