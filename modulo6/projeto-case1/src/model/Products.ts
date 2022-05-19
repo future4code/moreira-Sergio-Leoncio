@@ -1,5 +1,5 @@
 export type Products = {
-    id:string
+    id: number
 	name:string
 	tags: []	
 }
