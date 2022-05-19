@@ -1,14 +1,1 @@
-POST http://localhost:3003/products/signup
-
-
-###
-GET http://localhost:3003/products/search/8371
-
-###
-POST http://localhost:3003/products/tags/signup
-Content-Type: application/json
-
-{
-      "id": 9,
-      "name": "passeio"
-}
+POST http://localhost:3003/products

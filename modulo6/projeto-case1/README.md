@@ -1,4 +1,41 @@
-# Labenu Music Awards
-Como você deve saber muito bem, o nosso querido chefinho Astrodev é uma pessoa com Networking incrível e ele conhece vários artistas estrelados. Além disso, ele também é um grande ~~megalomaníaco~~ visionário e está planejando fazer um grande evento: o **LAMA**, *Labenu Musical Awards*, um festival  com várias bandas famosas para a formatura da sua turma e, no final, vocês podem eleger a banda que mais gostaram! Entretanto, na opinião dele, vocês só serão merecedores se entregarem um sistema impecável que permita o gerenciamento completo desses shows.
+Desafio back-end AMARO
+==========================
 
-Para isso já deixamos algumas tabelas prontas para vocês não precisarem se preocupar com a modelagem do banco. Deixamos também um template do projeto já com a estrutura da parte de usuários. Vocês podem usá-las a vontade, mas, se quiser fazer do zero sem esse auxílio, também pode.
+## Sobre o desafio
+
+### Criação de API para cadastro e consulta de produtos 
+
+Você precisa criar uma API com os seguintes requisitos:
+
+#### End-point para inserção de dados
+
+* O cliente poderá enviá-los em arquivos json ou xml e a API
+deverá inserir no banco de dados.
+* Escolha o banco de dados que achar melhor.
+
+#### End-point para consulta destes produtos
+
+* Pode ser consultado por: id, nome ou tags. Caso a consulta seja por uma tag ou nome, 
+deverá listar todos os produtos com aquela respectiva busca, poderá ser feito em um ou mais end-points.
+
+#### Requisitos Obrigatórios
+
+* Ter uma cobertura de teste relativamente boa, a maior que você conseguir.
+* Usar PHP
+* Pode usar qualquer framework PHP para o desenvolvimento ou não usar nenhum, fica a sua escolha.
+* Criar um cache para consulta.
+
+
+#### PLUS - Não necessário
+
+* Colocar uma autenticação JWT.
+* Usar PHP 7.1
+
+## Orientações
+* Procure fazer uma API sucinta. 
+* Os arquivos (json, xml) junto com o formato que o cliente irá enviar estão no repositório.
+* Pensa em escalabilidade, pode ser uma quantidade muito grande de dados.
+* Coloque isso em um repositório GIT.
+* Colocar as orientações de setup no README do seu repositório.
+
+# Boa sorte 

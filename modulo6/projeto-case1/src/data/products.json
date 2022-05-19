@@ -1,4 +1,5 @@
-[
+{
+  "products": [
     {
       "id": 8371,
       "name": "VESTIDO TRICOT CHEVRON",
@@ -7,7 +8,7 @@
     {
       "id": 8367,
       "name": "VESTIDO MOLETOM COM CAPUZ MESCLA",
-      "tags": ["casual", "metal"]
+      "tags": ["casual", "metal", "metal"]
     },
     {
       "id": 8363,
@@ -124,4 +125,5 @@
       "name": "VESTIDO WRAP FLEUR",
       "tags": ["neutro", "liso", "basics", "viagem"]
     }
-]
+  ]
+}
