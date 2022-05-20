@@ -1,8 +1,9 @@
+import { Products } from "../model/Products";
 import { SignupInputDTO } from "../types/signupInputDTO";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class ProductDatabase extends BaseDatabase {
-  findById = async (id: number) => {
+ public async findById(id: number) {
     try {
       const product = await this.connection.raw(`
             SELECT name FROM products 
@@ -16,7 +17,7 @@ export class ProductDatabase extends BaseDatabase {
     }
   };
 
-  create = async (input: any) => {
+  public async create(input: any):Promise<void> {
     await this.connection.raw(`
             INSERT INTO products (id, name, tags)
             VALUES (
@@ -27,7 +28,7 @@ export class ProductDatabase extends BaseDatabase {
         `);
   };
 
-  search = async (id: number) => {
+  public async search(id: number):Promise<any> {
     try {
       const result = await this.connection.raw(`
             SELECT * FROM products
@@ -36,7 +37,6 @@ export class ProductDatabase extends BaseDatabase {
             if(result[0].length === 0){
                 return null
             }
-           // console.log(result)
       return result[0][0];
 
     } catch (error: any) {

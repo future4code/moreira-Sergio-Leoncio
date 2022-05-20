@@ -1,3 +1,3 @@
 export type SearchInputDTO = {
-    id: number  
-}
+  id: number;
+};
