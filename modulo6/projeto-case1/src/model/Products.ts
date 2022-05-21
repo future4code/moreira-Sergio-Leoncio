@@ -1,4 +1,5 @@
 export class Products {
+  static getId: string;
   constructor(
     private id: number,
     private name: string,

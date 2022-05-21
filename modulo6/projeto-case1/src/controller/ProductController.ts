@@ -19,7 +19,7 @@ export class ProductContoller {
       };
       await this.productBusiness.create(input);
 
-      res.status(201).send({ message: "Produto cadastrado com sucesso!" });
+      res.status(201).send({ message: "Product registered successfully!" });
     } catch (error) {
       if (error instanceof Error) {
         return res.status(400).send(error.message);
