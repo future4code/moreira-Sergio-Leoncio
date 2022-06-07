@@ -1,21 +1,10 @@
-import express, { Express } from "express";
-import cors from "cors";
-import { AddressInfo } from "net";
-import dotenv from "dotenv";
+import DogheroBusiness from "./business/DogheroBusiness";
+import app from "./controller/App";
+import DogheroController from "./controller/DogheroController";
+import { DogheroData } from "./data/DogheroData";
 
-dotenv.config();
+const dogheroBusiness = new DogheroBusiness(new DogheroData)
+const dogheroController = new DogheroController(dogheroBusiness)
 
-const app: Express = express();
 
-app.use(express.json());
-app.use(cors());
-
-const server = app.listen(process.env.PORT || 3003, () => {
-  if (server) {
-    const addres = server.address() as AddressInfo;
-    console.log(`Server is running in http://localhost: ${addres.port}`);
-  } else {
-    console.error(`Failure upon starting server.`);
-  }  
-});
-
+app.post("/signup", dogheroController.signup)

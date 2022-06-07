@@ -7,6 +7,9 @@ export interface AuthenticationData{
   }
 
 export class Authenticator {
+    generate(arg0: { id: string; }) {
+        throw new Error("Method not implemented.");
+    }
 
     generateToken(info: AuthenticationData): string{
 

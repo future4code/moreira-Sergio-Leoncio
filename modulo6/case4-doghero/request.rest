@@ -1,0 +1,13 @@
+POST http://localhost:3003/signup
+Content-Type: application/json
+
+{
+  "status": "A FAZER", 
+  "date_schedule": 07-06-2022,
+  "price": 45,
+  "latitude": "0.8",
+  "longitude": "0.12"
+  "duration": "30",
+  "date_start": 07-06-2022,
+  "date_end": 07-06-2022
+} 
