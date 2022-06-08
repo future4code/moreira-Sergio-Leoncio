@@ -21,9 +21,9 @@ export class CreateTables extends BaseDatabase{
   );
   CREATE TABLE IF NOT EXISTS PETS (
     id  VARCHAR(255) PRIMARY KEY,
-    nome_pets VARCHAR(255) NOT NULL,
-    DOGHERO_ID VARCHAR(255) NOT NULL,
-    FOREIGN KEY (DOGHERO_ID) REFERENCES DOGHERO(ID)
+    name_pets VARCHAR(255) NOT NULL,
+    DOGHERO_id VARCHAR(255) NOT NULL,
+    FOREIGN KEY (DOGHERO_id) REFERENCES DOGHERO(id)
   )  
 `)
     .then(() => { console.log("Table create") })

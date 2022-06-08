@@ -8,7 +8,8 @@ export default class DogheroController {
   
     signup = async (req: Request, res: Response) => {
       const { 
-          status, 
+          status,
+          name_pets, 
           date_schedule, 
           price, 
           latitude, 
@@ -21,6 +22,7 @@ export default class DogheroController {
   
       const input: DogheroInputDTO = {
         status,
+        name_pets,
         date_schedule, 
         price, 
         latitude, 
@@ -31,9 +33,9 @@ export default class DogheroController {
 
       };
       try {
-        const token = await this.dogheroBusiness.signup(input);
+        const service = await this.dogheroBusiness.signup(input);
   
-        res.status(201).send({ message: "User registered successfully!", token});
+        res.status(201).send({ message: "Service registered successfully!", service});
       } catch (error) {
         if (error instanceof Error) {
           return res.status(400).send(error.message);

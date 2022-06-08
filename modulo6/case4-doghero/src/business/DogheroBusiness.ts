@@ -1,74 +1,87 @@
+import { Router } from "express";
+import { PetsData } from "../data/PetsData";
 import Doghero from "../model/Doghero";
-import { IDogheroData } from "../model/interface";
-import { Authenticator } from "../services/Authenticator";
-import { HashManager } from "../services/HashManager";
+import { IDogheroData, IPetsData } from "../model/interface";
+import Pets from "../model/Pets";
 import { IdGenerator } from "../services/IdGenerator";
 import { DogheroInputDTO } from "../types/dogheroInputDTO";
+import { ROLES_DURATION } from "../types/DogheroTypes";
 
 export default class DogheroBusiness {
-  
   private dogheroData: IDogheroData;
   private idGenerator: IdGenerator;
-  private hashManager: HashManager;
-  private authenticator: Authenticator;
+  private petsData: IPetsData;
 
-  constructor(dogheroDataRepository: IDogheroData) {
+  constructor(
+    dogheroDataRepository: IDogheroData,
+    petsDataRepository: IPetsData
+  ) {
     this.dogheroData = dogheroDataRepository;
     this.idGenerator = new IdGenerator();
-    this.hashManager = new HashManager();
-    this.authenticator = new Authenticator();
+    this.petsData = petsDataRepository;
   }
 
   signup = async (input: DogheroInputDTO) => {
     //validacao
-    const {         
-        status, 
-        date_schedule, 
-        price, 
-        latitude, 
-        longitude, 
-        duration, 
-        date_start, 
-        date_end
+    const {
+      status,
+      name_pets,
+      date_schedule,
+      latitude,
+      longitude,
+      date_start,
+      date_end,
     } = input;
     if (
-        !status || 
-        !date_schedule || 
-        !price || 
-        !latitude || 
-        !longitude || 
-        !duration || 
-        !date_start || 
-        !date_end) {
+      !status ||
+      !name_pets ||
+      !date_schedule ||
+      !latitude ||
+      !longitude ||
+      !date_start ||
+      !date_end
+    ) {
       throw new Error("Invalid fields");
     }
-    
-    //criar uma id pro usuario
-    const id = this.idGenerator.generateId();    
 
-    //conferir se o serviço existe
-    const registeredUser = await this.dogheroData.findDogheroById(id);
-    if (registeredUser) {
-      throw new Error("Service already registered");
-    } 
-        
-    //criar o usuario no banco
+    //criar uma id pro serviço
+    const id = this.idGenerator.generateId();
+
+    let start = new Date (date_start).getTime();
+    let end = new Date (date_end).getTime();
+    let price;
+    let duration;
+    let tempo = Math.abs(start - end);
+    tempo = (tempo / 6000) % 60;
+    if (tempo <= 30) {
+      duration = ROLES_DURATION.TRINTA;
+      price = 25 + (name_pets.length - 1) * 15;
+    } else {
+      duration = ROLES_DURATION.SESSENTA;
+      price = 35 + (name_pets.length - 1) * 20;
+    }
+
+    for (let name of name_pets) {
+      const nameId = this.idGenerator.generateId();
+      const pets = new Pets(nameId, name, id);
+      await this.petsData.create(pets);
+    }
+
+    //criar o serviço no banco
     const dog = new Doghero(
-          id,
-          status, 
-          date_schedule, 
-          price, 
-          latitude, 
-          longitude, 
-          duration, 
-          date_start, 
-          date_end
+      id,
+      name_pets,
+      status,
+      date_schedule,
+      price,
+      latitude,
+      longitude,
+      duration,
+      date_start,
+      date_end
     );
     await this.dogheroData.create(dog);
 
-    //criar o token
-    const token = this.authenticator.generate({ id });
-    //retornar o token
-    return token;
+    return dog;
   };
 }

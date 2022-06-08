@@ -3,11 +3,9 @@ Content-Type: application/json
 
 {
   "status": "A FAZER", 
-  "date_schedule": 07-06-2022,
-  "price": 45,
+  "date_schedule": 07-06-2022,  
   "latitude": "0.8",
-  "longitude": "0.12"
-  "duration": "30",
-  "date_start": 07-06-2022,
-  "date_end": 07-06-2022
+  "longitude": "0.12",  
+  "date_start": "2020/10/10 10:00:00",
+  "date_end": "2020/10/10 10:30:00"
 } 
