@@ -1,0 +1,25 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "email": "henrique2@gmail.com",
+    "password": "12345678",
+    "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "henrique1@gmail.com",
+    "password": "12345678"
+}
+
+###
+
+GET http://localhost:3003/user/profile
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA3YzEwZDY3LTQzM2YtNGY2MC1iOTI1LWUzMTNhNDZiY2RjYiIsImlhdCI6MTY1MDk5ODQ4MiwiZXhwIjoxNjUxMDg0ODgyfQ.6v4UtU7Pg2RyFVQoMmphLF74iFi5tab-VEo6-t0QZDg
+###
