@@ -1,7 +1,5 @@
 import { BaseDatabase } from "./BaseDatabase";
-import dotenv from "dotenv";
 
-dotenv.config();
 
 const printError = (error: any) => { console.log(error.sqlMessage || error.message) }
 

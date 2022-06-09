@@ -9,5 +9,7 @@ const dogheroController = new DogheroController(dogheroBusiness)
 
 
 
-app.post("/signup", dogheroController.signup)
+app.post("/dogwalk/create", dogheroController.create)
+
+app.get("/dogwalk/index", dogheroController.index)
 

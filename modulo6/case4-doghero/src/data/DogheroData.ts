@@ -1,8 +1,7 @@
 import Doghero from "../model/Doghero"
 import { IDogheroData } from "../model/interface"
+import Pets from "../model/Pets"
 import { BaseDatabase } from "./BaseDatabase"
-
-
 
 export class DogheroData extends BaseDatabase implements IDogheroData{
     protected TABLE_NAME = "DOGHERO"
@@ -42,4 +41,31 @@ export class DogheroData extends BaseDatabase implements IDogheroData{
           throw new Error(error.message);
         }
       }
+
+    index = async (): Promise<any> => {
+      try {
+        const result = await this.connection(this.TABLE_NAME)
+        .select("*")
+        console.log(result)
+        return result
+        
+      } catch (error: any) {
+        throw new Error(error.message);
+      }
+    }
+
+    searchByDate = async (today: string):Promise<any> => {
+      try {
+        const result = await this.connection(this.TABLE_NAME)
+          .select("*")
+          .join('PETS','DOGHERO.id', '=', 'PETS.DOGHERO_id')
+          .where('date_schedule','LIKE',`%${today}%`)
+          
+          return result
+
+      } catch (error: any) {
+        throw new Error(error.message);        
+      }
+    } 
+    
 }

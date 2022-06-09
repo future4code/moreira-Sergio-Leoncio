@@ -6,34 +6,27 @@ import { DogheroInputDTO } from "../types/dogheroInputDTO";
 export default class DogheroController {
     constructor(private dogheroBusiness: DogheroBusiness) {}
   
-    signup = async (req: Request, res: Response) => {
+    create = async (req: Request, res: Response) => {
       const { 
-          status,
           name_pets, 
           date_schedule, 
-          price, 
           latitude, 
           longitude, 
-          duration, 
           date_start, 
           date_end
 
       } = req.body;
   
       const input: DogheroInputDTO = {
-        status,
         name_pets,
         date_schedule, 
-        price, 
         latitude, 
         longitude, 
-        duration, 
         date_start, 
         date_end
-
       };
       try {
-        const service = await this.dogheroBusiness.signup(input);
+        const service = await this.dogheroBusiness.create(input);
   
         res.status(201).send({ message: "Service registered successfully!", service});
       } catch (error) {
@@ -43,5 +36,22 @@ export default class DogheroController {
         res.status(500).send("Erro no signup");
       }
     };
+
+    index =  async (req: Request, res: Response) =>{
+      try{
+        const today = req.query.today as string       
+
+        const service = await this.dogheroBusiness.index(today);       
+      
+        res.status(200).send({service});
+        }catch(error: any){
+        switch(error.message){
+          case "Some a error!":
+            res.status(500).send(error.message)
+          default:
+            res.status(400).send({message: error.message});
+        }
+      }
+    }
 }  
   

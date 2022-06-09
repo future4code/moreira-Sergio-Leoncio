@@ -3,7 +3,6 @@ import { ROLES_DURATION, ROLES_STATUS } from "../types/DogheroTypes";
 export default class Doghero {
     constructor(
         private _id: string,
-        private _name_pets: string[],
         private _status: ROLES_STATUS,
         private _date_schedule: Date,
         private _price: number,
@@ -19,12 +18,6 @@ export default class Doghero {
     }
     public set id(value: string ) {
         this._id = value
-    }
-    public get name_pets(): string[] {
-        return this._name_pets 
-    }
-    public set name_pets(value: string[] ) {
-        this._name_pets = value
     }
     public get status(): ROLES_STATUS {
         return this._status 
