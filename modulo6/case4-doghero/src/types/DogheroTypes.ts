@@ -8,3 +8,8 @@ export enum ROLES_DURATION{
     TRINTA = "30",
     SESSENTA = "60"
 }
+
+export type updateStart = {
+    id?: string
+    status:string
+}

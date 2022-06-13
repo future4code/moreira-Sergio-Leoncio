@@ -16,6 +16,13 @@ GET http://localhost:3003/dogwalk/index?today=2022-05-06
 ###
 GET http://localhost:3003/dogwalk/index
 
+###
+PUT http://localhost:3003/dogwalk/start
+Content-Type: application/json
 
+{
+  "id": "71eb721f-3fd7-4a1e-94ad-2db3d1c8184f",
+  "status": "ANDAMENTO"
+}
 
 

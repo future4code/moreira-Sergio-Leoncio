@@ -67,7 +67,7 @@ export class DogheroData extends BaseDatabase implements IDogheroData {
   start = async (id: string, status: string): Promise<void> => {
     try {
       await this.connection(this.TABLE_NAME).where({ id }).update({
-        status: ROLES_STATUS,
+        status
       });
     } catch (error: any) {
       throw new Error(error.message);
