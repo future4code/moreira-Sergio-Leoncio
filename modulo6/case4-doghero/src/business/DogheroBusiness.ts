@@ -88,5 +88,12 @@ export default class DogheroBusiness {
 
     return service
   }
- 
+
+  start = async (id: string, input: string): Promise<void>=>{
+    //const { status } = input
+        
+   const service = await this.dogheroData.start(id, input)
+
+  }
+
 }

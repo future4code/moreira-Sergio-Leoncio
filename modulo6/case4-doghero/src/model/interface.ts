@@ -1,3 +1,4 @@
+import { ROLES_STATUS } from "../types/DogheroTypes";
 import Doghero from "./Doghero";
 import Pets from "./Pets";
 
@@ -6,7 +7,7 @@ export interface IDogheroData{
     findDogheroById(id: string):Promise<Doghero>
     index():Promise<Doghero>
     searchByDate(today: string):Promise<Doghero>
-    
+    start(id: string, status: string):Promise<void>    
 }
 
 export interface IPetsData{

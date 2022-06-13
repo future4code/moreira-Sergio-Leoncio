@@ -10,6 +10,5 @@ const dogheroController = new DogheroController(dogheroBusiness)
 
 
 app.post("/dogwalk/create", dogheroController.create)
-
 app.get("/dogwalk/index", dogheroController.index)
-
+app.put("/dogwalk/start", dogheroController.start)

@@ -1,6 +1,7 @@
 import { Response, Request } from "express";
 import DogheroBusiness from "../business/DogheroBusiness";
 import { DogheroInputDTO } from "../types/dogheroInputDTO";
+import { ROLES_DURATION } from "../types/DogheroTypes";
 
 
 export default class DogheroController {
@@ -45,6 +46,28 @@ export default class DogheroController {
       
         res.status(200).send({service});
         }catch(error: any){
+        switch(error.message){
+          case "Some a error!":
+            res.status(500).send(error.message)
+          default:
+            res.status(400).send({message: error.message});
+        }
+      }
+    }
+
+    start = async (req: Request, res: Response) => {
+
+      const  input = {
+        id: req.body.id,
+        status: req.body.status     
+      } as any
+      
+      try{         
+      
+      const service = await this.dogheroBusiness.start(id,input) 
+  
+      res.status(201).send({ message:'status edited success', service});
+    } catch(error: any){
         switch(error.message){
           case "Some a error!":
             res.status(500).send(error.message)
