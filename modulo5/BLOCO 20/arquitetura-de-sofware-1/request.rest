@@ -1,0 +1,26 @@
+POST http://localhost:3003/signup
+Content-Type: application/json
+
+{
+   "name": "Claudia", 
+   "email": "claudia@gmail.com" ,
+   "password": "123456",
+   "role":"ADMIN"
+}
+
+###
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{   
+   "email": "Claudia@gmail.com" ,
+   "password": "123456"
+}
+
+###
+GET http://localhost:3003/user/a18211ff-45c8-4f79-8937-d54a73fae41d
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExODIxMWZmLTQ1YzgtNGY3OS04OTM3LWQ1NGE3M2ZhZTQxZCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1MTE3NTgyMywiZXhwIjoxNjUxMjYyMjIzfQ.wOLj10B8GstEIt9o75_1IgPtK0XfR3CPxP0h1-yaC5Q
+ 
+
+
