@@ -1,0 +1,28 @@
+POST http://localhost:3003/dogwalk/create
+Content-Type: application/json
+
+{
+  "name_pets":["marley", "rana"],
+  "date_schedule": "2022-05-06",  
+  "latitude": "0.8",
+  "longitude": "0.12",  
+  "date_start": "2022/01/06 18:00:00",
+  "date_end": "2022/01/06 19:00:00"
+} 
+
+###
+GET http://localhost:3003/dogwalk/index?today=2022-05-06
+
+###
+GET http://localhost:3003/dogwalk/index
+
+###
+PUT http://localhost:3003/dogwalk/start
+Content-Type: application/json
+
+{
+  "id": "71eb721f-3fd7-4a1e-94ad-2db3d1c8184f",
+  "status": "ANDAMENTO"
+}
+
+
